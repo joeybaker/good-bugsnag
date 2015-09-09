@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    "closure-elimination"
+  ],
+  "optional": [
+    "runtime"
+  ],
+  "stage": 0
+}
