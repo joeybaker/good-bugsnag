@@ -9,7 +9,7 @@ A [good](https://github.com/hapijs/good) reporter implementation to write [hapi]
 - [Install](#install)
 - [Usage](#usage)
 - [Methods](#methods)
-- [Events](#events)
+  - [`goodBugsnag(<Object> events, <Object> config)`](#goodbugsnagobject-events-object-config)
 - [Tests](#tests)
 - [Developing](#developing)
   - [Requirements](#requirements)
