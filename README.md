@@ -1,6 +1,6 @@
 # good-bugsnag [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Build Status][travis-image]][travis-url]
 
-A [good](https://github.com/hapijs/good) reporter implementation to write [hapi](http://hapijs.com/) server events to the [Bugsnag](https://bugsnag.com). ou'll need a [bugsnag account](https://bugsnag.com/user/new) and API key to use this plugin.
+A [good](https://github.com/hapijs/good) reporter implementation to write [hapi](http://hapijs.com/) server events to the [Bugsnag](https://bugsnag.com). You'll need a [bugsnag account](https://bugsnag.com/user/new) and API key to use this plugin.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
