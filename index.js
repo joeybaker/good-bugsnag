@@ -16,7 +16,7 @@ export default class BugsnagReporter {
   }
 
   static handleError (data) {
-    bugsnag.notify(data.error, omit(data, 'error'))
+    bugsnag.notify(data.error || data, omit(data, 'error'))
   }
 
   static handleRequestError (data) {
@@ -40,7 +40,7 @@ export default class BugsnagReporter {
     if (!err) return
 
     const errorName = err.toString().replace('Error: ', '')
-    bugsnag.notify(err, Object.assign(data, {
+    bugsnag.notify(err, Object.assign({}, data, {
       errorName
     , groupingHash: data.event
     , severity: 'error'
@@ -55,10 +55,19 @@ export default class BugsnagReporter {
     else if (data.error) return data.error
     else if (data.err) return data.err
     else {
-      const jsonString = JSON.stringify(info)
-      const message = `error log message found without an error. Add \`{error: new Error()}\` to the log data: ${jsonString}`
-      const err = new Error(message)
-      bugsnag.notify(err, info)
+      let err
+
+      try {
+        const jsonString = JSON.stringify(info)
+        const message = `error log message found without an error. Add \`{error: new Error()}\` to the log data: ${jsonString}`
+        err = new Error(message)
+      }
+      catch (e) {
+        err = new Error(info)
+      }
+      finally {
+        bugsnag.notify(err, info)
+      }
     }
   }
 
