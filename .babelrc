@@ -1,9 +1,11 @@
 {
+  "presets": [
+    "es2015"
+  ],
   "plugins": [
+    "transform-object-rest-spread",
+    "transform-class-properties",
     "closure-elimination"
   ],
-  "optional": [
-    "runtime"
-  ],
-  "stage": 0
+  "sourceMaps": true
 }
