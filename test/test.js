@@ -43,6 +43,12 @@ test('good-bugsnag#constructor', (t) => {
   , 'errors if no API key is passed'
   )
 
+  t.equal(
+    typeof GoodBugsnag
+    , 'function'
+    , `exports a function because that's what Good requires`
+  )
+
   t.end()
 })
 
