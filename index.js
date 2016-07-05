@@ -51,7 +51,7 @@ export default class BugsnagReporter {
     const {data} = info
 
     if (data instanceof Error) return data
-    else if (data.isBoom) return data
+    else if (data.response && data.response.isBoom) return data.response
     else if (data.error) return data.error
     else if (data.err) return data.err
     else {
