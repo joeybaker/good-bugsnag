@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.1.2 | 2016-07-13
+* Fix: Even better detection of boom errors
+
 ## v1.1.1 | 2016-07-05
 * Fix: don't break `module.exports` #oops
 
@@ -15,6 +18,7 @@
 
 ## v1.0.0 | 2015-09-09
 Init
+
 
 
 
