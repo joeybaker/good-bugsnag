@@ -3,6 +3,8 @@ import GoodBugsnag from '../index.js'
 import {Readable} from 'stream'
 import hoek from 'hoek'
 import sinon from 'sinon'
+import boom from 'boom'
+import mockResponse from './fixtures/response.json'
 
 const apiKey = 'xxxx'
 
@@ -92,5 +94,24 @@ test('good-bugsnag#onData', (t) => {
 
   handleErrorStub.restore()
   handleRequestErrorStub.restore()
+  t.end()
+})
+
+test('good-bugsnag#getErrorFromData', (t) => {
+  const {getErrorFromData} = GoodBugsnag
+  const message = 'oops'
+  const boomErr = boom.notFound(message)
+
+  t.equal(
+    getErrorFromData({data: boomErr}).message
+    , message
+    , 'pulls message off of boom Errors'
+  )
+
+  t.equal(
+    getErrorFromData(mockResponse).message
+    , mockResponse.data.response.output.payload.message
+    , 'pulls message off of a response'
+  )
   t.end()
 })

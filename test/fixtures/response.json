@@ -1,0 +1,46 @@
+{
+  "event": "request",
+  "timestamp": 1467744609917,
+  "tags": [
+    "response",
+    "error"
+  ],
+  "data": {
+    "response": {
+      "data": null,
+      "isBoom": true,
+      "isServer": false,
+      "output": {
+        "statusCode": 404,
+        "payload": {
+          "statusCode": 404,
+          "error": "Not Found",
+          "message": "No thing found for thing id 1"
+        },
+        "headers": {}
+      }
+    },
+    "payload": {
+      "urlToken": "secret"
+    },
+    "params": {},
+    "url": {
+      "protocol": null,
+      "slashes": null,
+      "auth": null,
+      "host": null,
+      "port": null,
+      "hostname": null,
+      "hash": null,
+      "search": null,
+      "query": {},
+      "pathname": "/v1/getThingByToken",
+      "path": "/v1/getThingByToken",
+      "href": "/v1/getThingByToken"
+    }
+  },
+  "pid": 17,
+  "id": "1467744609905:secret:crypto:11203",
+  "method": "post",
+  "path": "/v1/getThingByToken"
+}

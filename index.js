@@ -2,6 +2,7 @@ import {Squeeze as squeeze} from 'good-squeeze'
 import hoek from 'hoek'
 import bugsnag from 'bugsnag'
 import omit from 'lodash/object/omit'
+import get from 'lodash/object/get.js'
 
 export default class BugsnagReporter {
   static defaultOptions = {
@@ -51,7 +52,10 @@ export default class BugsnagReporter {
     const {data} = info
 
     if (data instanceof Error) return data
-    else if (data.response && data.response.isBoom) return data.response
+    else if (get(data, 'response.isBoom')) {
+      return get(data, 'response.output.payload', new Error('Response err' + data))
+    }
+    else if (data.isBoom) return data
     else if (data.error) return data.error
     else if (data.err) return data.err
     else {
