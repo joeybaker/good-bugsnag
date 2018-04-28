@@ -79,9 +79,9 @@
     "tape": "^4.6.0"
   },
   "dependencies": {
-    "bugsnag": "^1.7.0",
-    "good-squeeze": "^2.1.0",
-    "hoek": "^2.14.0",
+    "bugsnag": "^2.3.1",
+    "good-squeeze": "^5.0.2",
+    "hoek": "^5.0.3",
     "lodash": "^3.10.1"
   }
 }
