@@ -27,14 +27,27 @@ npm i -S good-bugsnag
 ## Usage
 
 ```js
-import goodBugsnag from 'good-bugsnag'
 import good from 'good'
 
 const reporters = [
-  {reporter: goodBugsnag, config: {apiKey: 'xxxxx'}}
+  {
+    bugsnag: [{
+    module: 'good-bugsnag'
+    , args: [
+        {
+          // add events to pass to good-squeeze subscription
+          // https://github.com/hapijs/good-squeeze#squeezesubscriptionevents
+        },
+        {
+          // bugsnag options
+          apiKey: 'xxxxx'
+        }
+      ]
+    }]
+  }
 ]
 
-server.register({
+await server.register({
     register: good
   , options: {reporters}
 })
