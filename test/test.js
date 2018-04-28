@@ -1,21 +1,10 @@
 import test from 'tape'
 import GoodBugsnag from '../index.js'
-import {Readable} from 'stream'
-import hoek from 'hoek'
 import sinon from 'sinon'
 import boom from 'boom'
 import mockResponse from './fixtures/response.json'
 
 const apiKey = 'xxxx'
-
-const createReadStream = (done = hoek.ignore) => {
-  const result = new Readable({objectMode: true})
-
-  result._read = hoek.ignore
-  result.once('end', done)
-
-  return result
-}
 
 const createReporter = (events, config = {apiKey}) => {
   return new GoodBugsnag(events, config)
@@ -54,14 +43,13 @@ test('good-bugsnag#constructor', (t) => {
   t.end()
 })
 
-test('good-bugsnag#init', (t) => {
+test('good-bugsnag#_transform', (t) => {
   const onData = sinon.spy(GoodBugsnag, 'onData')
   const reporter = createReporter()
-  const stream = createReadStream()
   const done = sinon.stub()
 
   t.doesNotThrow(
-    reporter.init.bind(reporter, stream, null, done)
+    reporter._transform.bind(reporter, mockResponse, null, done)
   , 'does not throw'
   )
 
