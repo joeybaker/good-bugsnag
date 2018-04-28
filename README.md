@@ -32,17 +32,17 @@ import good from 'good'
 const reporters = [
   {
     bugsnag: [{
-    module: 'good-bugsnag'
-    , args: [
-        {
-          // add events to pass to good-squeeze subscription
-          // https://github.com/hapijs/good-squeeze#squeezesubscriptionevents
-        },
-        {
-          // bugsnag options
-          apiKey: 'xxxxx'
-        }
-      ]
+      module: 'good-bugsnag'
+      , args: [
+          {
+            // add events to pass to good-squeeze subscription
+            // https://github.com/hapijs/good-squeeze#squeezesubscriptionevents
+          },
+          {
+            // bugsnag options
+            apiKey: 'xxxxx'
+          }
+        ]
     }]
   }
 ]
