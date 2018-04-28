@@ -5,7 +5,7 @@ import bugsnag from 'bugsnag'
 import omit from 'lodash/object/omit'
 import get from 'lodash/object/get.js'
 
-class BugsnagReporter extends Transform {
+export default class BugsnagReporter extends Transform {
   static defaultOptions = {
     events: {
       log: 'error'
@@ -115,5 +115,3 @@ class BugsnagReporter extends Transform {
     cb()
   }
 }
-
-module.exports = BugsnagReporter
