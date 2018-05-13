@@ -1,10 +1,11 @@
-import {Squeeze as squeeze} from 'good-squeeze'
+import {Squeeze} from 'good-squeeze'
+import {Transform} from 'stream'
 import hoek from 'hoek'
 import bugsnag from 'bugsnag'
 import omit from 'lodash/object/omit'
 import get from 'lodash/object/get.js'
 
-export default class BugsnagReporter {
+export default class BugsnagReporter extends Transform {
   static defaultOptions = {
     events: {
       log: 'error'
@@ -92,7 +93,9 @@ export default class BugsnagReporter {
     }
   }
 
-  constructor (events, config = {}) {
+  constructor (events = {}, config = {}) {
+    super({objectMode: true, decodeStrings: false})
+
     if (!(this instanceof BugsnagReporter)) {
       return new BugsnagReporter(events, config)
     }
@@ -101,13 +104,14 @@ export default class BugsnagReporter {
 
     bugsnag.register(config.apiKey, hoek.applyToDefaults(BugsnagReporter.defaultOptions.config, config))
 
-    this.squeeze = squeeze(hoek.applyToDefaults(BugsnagReporter.defaultOptions.events, events))
+    this._subscription = Squeeze.subscription(hoek.applyToDefaults(BugsnagReporter.defaultOptions.events, events))
   }
 
-  init (readStream, emitter, done) {
-    this.squeeze.on('data', BugsnagReporter.onData)
+  _transform (chunk, enc, cb) {
+    if (Squeeze.filter(this._subscription, chunk)) {
+      BugsnagReporter.onData(chunk)
+    }
 
-    readStream.pipe(this.squeeze)
-    done()
+    cb()
   }
 }
