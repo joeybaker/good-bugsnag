@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.0.0 | 2018-05-14
+* Change Updating to support good v8 and updating tests
+* Fix Moving back to default export
+* Refactor Fixing lint warnings
+* Chore Updating dependencies to pass security audit
+* Chore add yarn.lock
+* Doc Adding docs for new changes based on new versions of hapi and good
+* Doc Fixing spacing issue in documentation
+
 ## v1.1.2 | 2016-07-13
 * Fix: Even better detection of boom errors
 
@@ -18,6 +27,7 @@
 
 ## v1.0.0 | 2015-09-09
 Init
+
 
 
 
