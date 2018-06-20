@@ -29,23 +29,21 @@ npm i -S good-bugsnag
 ```js
 import good from 'good'
 
-const reporters = [
-  {
-    bugsnag: [{
-      module: 'good-bugsnag'
-      , args: [
-          {
-            // add events to pass to good-squeeze subscription
-            // https://github.com/hapijs/good-squeeze#squeezesubscriptionevents
-          },
-          {
-            // bugsnag options
-            apiKey: 'xxxxx'
-          }
-        ]
-    }]
-  }
-]
+const reporters = {
+  bugsnag: [{
+    module: 'good-bugsnag'
+    , args: [
+        {
+          // add events to pass to good-squeeze subscription
+          // https://github.com/hapijs/good-squeeze#squeezesubscriptionevents
+        },
+        {
+          // bugsnag options
+          apiKey: 'xxxxx'
+        }
+      ]
+  }]
+}
 
 await server.register({
     register: good
@@ -58,7 +56,7 @@ await server.register({
 Creates a new GoodBugsnag object with the following arguments:
 
 - `events`: an object of key value pairs.
-  - `key`: one of the supported [good events](https://github.com/hapijs/good). Events, will send their data to Bugsnag.
+  - `key`: one of the supported [good events](https://github.com/hapijs/good/blob/master/API.md#event-types). Events, will send their data to Bugsnag.
   - `value`: a single string or an array of strings to filter incoming events. "\*" indicates no filtering. `null` and `undefined` are assumed to be "\*".
   - defaults:
 
